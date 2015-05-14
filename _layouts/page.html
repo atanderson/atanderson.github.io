@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ page.title }}</title>
-</head>
-<body>
+---
+layout: default
+---
 
-<section>
 {{ content | markdownify }}
-</section>
 
 <section>
 <ul>
@@ -19,6 +13,3 @@
     {% endfor %}
 </ul>
 </section>
-
-</body>
-</html>

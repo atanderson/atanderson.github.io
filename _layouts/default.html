@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>homepage</title>
+    <title>{{ page.title }}</title>
     <link rel="stylesheet" type="text/css" href="/css/syntax.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
@@ -18,27 +18,16 @@
 
 <section>
 
-<h1>index page</h1>
-
-
-<section>
-<ul>
-    
-    <li>
-        <a href="/hello-world/">Hello World</a>
-    </li>
-    
-</ul>
-</section>
+{{ content }}
 
 </section>
 
 <footer>
     <ul>
         <li>
-            
-            <a href="http://www.github.com/atanderson">GitHub</a>
-            
+            {% if site.footer-links.github %}
+            <a href="http://www.github.com/{{ site.footer-links.github }}">GitHub</a>
+            {% endif %}
         </li>
     </ul>
 </footer>

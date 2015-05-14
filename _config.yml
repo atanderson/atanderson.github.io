@@ -1,0 +1,19 @@
+footer-links:
+  github: atanderson
+
+markdown: redcarpet
+highlighter: pygments
+permalink: /:title/
+
+sass:
+  style: :expanded
+
+gems:
+  - jekyll-sitemap
+
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - LICENSE
+    - README.md
+    - CNAME
