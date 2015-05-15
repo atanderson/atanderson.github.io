@@ -46,3 +46,15 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+// Custom reset
+
+a {
+    text-decoration: none;
+    color: #27D5FF;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+}

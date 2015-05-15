@@ -5,6 +5,7 @@
     <title>{{ page.title }}</title>
     <link rel="stylesheet" type="text/css" href="/css/syntax.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -16,20 +17,22 @@
     </nav>
 </header>
 
-<section>
+<section class="content">
 
 {{ content }}
 
 </section>
 
 <footer>
-    <ul>
-        <li>
-            {% if site.footer-links.github %}
-            <a href="http://www.github.com/{{ site.footer-links.github }}">GitHub</a>
-            {% endif %}
-        </li>
-    </ul>
+    <nav>
+        <ul>
+            <li>
+                {% if site.footer-links.github %}
+                <a href="http://www.github.com/{{ site.footer-links.github }}">GitHub</a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
 </footer>
 
 </body>
