@@ -1,21 +1,18 @@
 ---
 title: homepage 
-layout: page
+layout: default
 ---
 
-# h1
+<section class="intro">
+<h2>andrew anderson</h2>
+</section>
 
-## h2
-
-### h3
-
-#### h4
-
-##### h5
-
-###### h6
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus quisquam consequatur iure eligendi ea ex molestiae labore illum nam, tempore deleniti eveniet, repellat similique at necessitatibus modi sapiente temporibus. Odit.
-
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore eaque earum quaerat perferendis sed molestiae porro facere facilis, officiis, natus, nesciunt distinctio delectus. Fuga provident, necessitatibus eaque quibusdam pariatur cum.
+<section>
+    <ul class="posts">
+        {% for post in site.posts %}
+        <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>  {{ post.date | date_to_string }}
+        </li>
+        {% endfor %}
+    </ul>
+</section>

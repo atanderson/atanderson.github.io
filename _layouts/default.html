@@ -5,14 +5,34 @@
     <title>{{ page.title }}</title>
     <link rel="stylesheet" type="text/css" href="/css/syntax.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Gentium+Book+Basic:400,400italic,700,700italic:latin', 'Droid+Sans+Mono' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })(); </script>
+
+    <noscript>
+      <link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    </noscript>
+
 </head>
 <body>
 
 <header>
+    <a href="/" class="logo">{% include logo.html %}</a>
     <nav>
         <ul>
-            <li><a href="/">home</a></li>
+            <li><a href="/" class="colorshift" >posts</a></li>
+            <li><a href="/about.html" class="colorshift" >about</a></li>
         </ul>
     </nav>
 </header>
@@ -28,12 +48,17 @@
         <ul>
             <li>
                 {% if site.footer-links.github %}
-                <a href="http://www.github.com/{{ site.footer-links.github }}">GitHub</a>
+                <a class="colorshift" href="http://www.github.com/{{ site.footer-links.github }}">GitHub</a>
                 {% endif %}
             </li>
         </ul>
     </nav>
 </footer>
 
+<script type="text/javascript" src="/js/dropcap.js"></script>
+<script>
+    var dropcaps = document.querySelectorAll(".dropcap");
+    window.Dropcap.layout(dropcaps, 2.3, 2);
+  </script>
 </body>
 </html>

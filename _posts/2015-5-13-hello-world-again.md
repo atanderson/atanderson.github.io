@@ -5,7 +5,7 @@ layout: post
 
 This is what the second paragraph looks like. Not very exciting, but it gets the job done. Now whats see what things will look like when I want to create a section of code:
 
-##### This is a sample code section
+###### This is a sample code section
 {% highlight javascript linenos %}
 (function() {
     console.log('hello world');
