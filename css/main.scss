@@ -1,30 +1,204 @@
 ---
 ---
 
+//------------------------------------------------------------------------------
+// #TABLE OF CONTENTS
+//------------------------------------------------------------------------------
+// Imports................................SCSS partials imported from /_includes
+// Vars............................................................Reused values
+// Mixins............................................repeated sets of properties
+// Typography................................Almost all HTML5 typographical tags
+//   Base font stack..........................Other elements cascade off of this
+//   Specific elements...............................h1-5, blockquotes, em, etc.
+// Default template.....................Layout elements that appear on all pages
+//   Header & Footer..............................Logo/navigation links included
+//   Content area.........................Main area that holds post/page content
+// Post template.....................Elements that only appear on the posts page
+// Index template.....................Elements that only appear on the home page
+// Animations............................@keyframes for whatever needs animating
+// Utility..................................................Misc. useful classes
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+
+//#Imports
+//------------------------------------------------------------------------------
 @import "reset";
 
-//Header
+//#Vars
+//------------------------------------------------------------------------------
+$spaceGrey: #333333;
+$magenta: #FF00FF;
+$codeStack: 'Droid Sans Mono', 'Helvetica', 'Arial', sans-serif;
+$copyStack: 'Gentium Book Basic', Georgia , Cambria, 'Times New Roman', times, serif;
+$copy: #222222;
 
-header .logo {
-    max-height: 50px;
-    display: block;
+//#Mixins
+//------------------------------------------------------------------------------
+@mixin animate($name, $duration, $iteration){
+    -webkit-animation: $name $duration $iteration;
+    -moz-animation:    $name $duration $iteration; 
+    -o-animation:      $name $duration $iteration; 
+    animation:         $name $duration $iteration; 
 }
 
-header .logo svg {
-    max-height: 50px;
-    max-width: 50px;
-    float: left;
+@mixin primaryShift($name, $prop){
+
+    @-webkit-keyframes #{$name} {
+        0% {#{$prop}: #FF00FF;}
+        33% {#{$prop}: #00FFFF;}
+        66% {#{$prop}: #FFFF00;}
+    }
+    
+    @-moz-keyframes #{$name} {
+        0% {#{$prop}: #FF00FF;}
+        33% {#{$prop}: #00FFFF;}
+        66% {#{$prop}: #FFFF00;}
+    }
+
+    @-o-keyframes #{$name} {
+        0% {#{$prop}: #FF00FF;}
+        33% {#{$prop}: #00FFFF;}
+        66% {#{$prop}: #FFFF00;}
+    }
+
+    @keyframes #{$name} {
+        0% {#{$prop}: #FF00FF;}
+        33% {#{$prop}: #00FFFF;}
+        66% {#{$prop}: #FFFF00;}
+    }
+
+}
+
+//#Typography
+//------------------------------------------------------------------------------
+//#Base Font Stack
+body {
+    font: 100%/1.6 $copyStack;
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures;
+    hyphens: auto;
+    word-break: break-word;
+    font-weight: 400;
+
+    @media only screen and (min-width: 40em){
+        font-size: 125%;
+    }
+
+}
+
+//#Individual elements
+h1 {
+    font-size: 3.125em;
+}
+
+h2 {
+    font-size: 2.618em;
+}
+
+h3 {
+    font-size: 1.931em;
+}
+
+h4 {
+    font-size: 1.618em;
+}
+
+h5 {
+    font-size: 1.194em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+p {
+    font-size: 1.125em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 1rem 0 0.6rem 0;
+    line-height: 1.1em;
+    color: $copy;
+}
+
+.dropcap {
+    color: $magenta;
+}
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: 700;
+}
+
+hr {
+    border-color: lighten($copy, 50);
+    border-style: dashed;
+    margin: 1.6em auto;
+}
+
+li li { //sublists
+    margin-left: 1em;
+}
+
+blockquote{
+    width: 100%;
+    float:left;
+    font-size: 120%;
+    position: relative;
+    color: lighten($copy, 20);
+    font-style: italic;
+
+    &::before {
+        content: '\201C'; //left double quote
+        position: absolute;
+        font-size: 1.75em;
+        left: -.6em;
+        top: -.125em;
+    }
+
+}
+
+//#Default Template
+//------------------------------------------------------------------------------
+//#Header & Footer
+header {
+    
+    ul {
+        float: right;
+    }
+
+    li {
+        margin-left: 1em;
+    }
+
+    .logo {
+        display: block;
+        max-height: 50px;
+
+        svg {
+            float: left;
+            max-height: 50px;
+            max-width: 50px;
+            fill: $magenta;
+            @include animate(fillShift, 10s, infinite);
+        }
+
+    }
+
 }
 
 header,
 footer {
     padding: .25em;
-    background: #333333;
+    background: $spaceGrey;
     height: 50px;
 
     nav {
         margin: auto;
-        float: right;
+        max-width: 40em;
 
         ul {
             list-style: none;
@@ -32,10 +206,11 @@ footer {
             li {
                 float:left;
             }
+
         }
 
         a {
-            font-family: 'Droid Sans Mono', 'Helvetica', 'Arial', sans-serif;
+            font-family: $codeStack;
             text-transform: uppercase;
             letter-spacing: 1px;
             line-height: 50px;
@@ -45,138 +220,78 @@ footer {
 
 }
 
-header {
-    position: relative;
-
-    li {
-        margin-left: 1em;
-    }
+html, body { //Required for sticky footer 
+  height: 100%;
 }
 
-// header::after {
-//     content: '';
-//     width: 100%;
-//     height: 5px;
-//     position: absolute;
-//     left: 0;
-//     right: 0;
-//     bottom: -5px;
-//     float:left;
-//     background: #CCCCCC;
-// }
-
-footer {
-    nav {
-        max-width: 40em;
-        float: none;
-    }
-}
-
-body {
-    font: 100%/1.6 'Gentium Book Basic', Georgia , Cambria, 'Times New Roman', times, serif;
-    font-kerning: normal;
-    font-variant-ligatures: common-ligatures;
-    @media only screen and (min-width: 40em){
-        font-size: 125%;
-    }
-
-}
-
-//Content Typography
+//#Content area
 .content {
-    font-weight: 400;
     padding: 0 2em;
-    hyphens: auto;
-    word-break: break-word;
     max-width: 40em;
     margin: auto;
-    color: #333333;
+    color: $spaceGrey;
+    min-height: 100%;
 
-    .dropcap {
-        color: #FF00FF;
+    &::after {
+        content: "";
+        display: block;
+        height: 50px;
+    }
+    
+    & > ul { //prevent sublists from increasing in size
+        font-size: 1.125em
     }
 
-    h1,h2,h3,h4,h5,h6 {
-        margin: 1rem 0 0.6rem 0;
-        line-height: 1.1em;
-        color: #222222
+    & > p:last-of-type::after { //tombstone
+        content: '';
+        transform: rotate(50deg);
+        display: inline-block;
+        position: relative;
+        border: 1px solid $spaceGrey;
+        top: -1px;
+        left: 5px;
+        width: 6px;
+        height: 6px;
+        background-color: $magenta;
+        @include animate(backgroundShift, 10s, infinite);
     }
 
     p, & > ul, div {
         margin-bottom: 1.6rem;
     }
 
-    & > p:last-of-type::after {
-        content: '';
-        transform: rotate(50deg);
-        display: inline-block;
-        position: relative;
-        border: 1px solid #333333;
-        top: -1px;
-        left: 5px;
-        width: 6px;
-        height: 6px;
-        background-color: #FF00FF;
-        -webkit-animation-name: backgroundShift;
-        -webkit-animation-duration: 10s;
-        -webkit-animation-iteration-count: infinite;
-        animation-name: backgroundShift;
-        animation-duration: 10s;
-        animation-iteration-count: infinite;
-    }
-
-    h1 {font-size: 3.125em;}
-    h2 {font-size: 2.618em;}
-    h3 {font-size: 1.931em;}
-    h4 {font-size: 1.618em;}
-    h5 {font-size: 1.194em;}
-    h6 {font-size: 1em;}
-    p {font-size: 1.125em;}
-    & > ul {
-        font-size: 1.125em
-    }
-
-    li li {margin-left: 1em;}
-
-    blockquote{
-        width: 100%;
-        float:left;
-        font-size: 120%;
-        position: relative;
-        color: #444444;
-        font-style: italic;
-
-        &::before {
-            content: '\201C';
-            position: absolute;
-            font-size: 1.75em;
-            left: -.6em;
-            top: -.125em;
-        }
-
-    }
-
 }
 
+//#Post Template
+//------------------------------------------------------------------------------
 .date {
-    color: #999;
+    color: lighten($copy, 50);
     margin-bottom: 1.6rem;
 }
 
-hr {
-    border-color: #cccccc;
-    border-style: dashed;
-    margin: 1.6em auto;
+.previous-post {
+    float: left;
 }
 
+.next-post {
+    float: right;
+}
+
+.other-articles {
+    padding-top: 1.6rem;
+}
+
+//#Index Template
+//------------------------------------------------------------------------------
 .intro {
     font-size: 120%;
     padding: .25em;
-    font-family: 'Droid Sans Mono', 'Helvetica', Arial, sans-serif;
+    font-family: $codeStack;
 
     p {
         font-size: 1.125em;
     }
+
 }
 
 .posts {
@@ -196,89 +311,16 @@ hr {
 
 }
 
+//#Animations
+//------------------------------------------------------------------------------
+@include primaryShift(borderShift, border-color);
+@include primaryShift(backgroundShift, background-color);
+@include primaryShift(colorShift, color);
+@include primaryShift(fillShift, fill);
+
+//#Utility
+//------------------------------------------------------------------------------
 .colorshift {
-    color: #FF00FF;
-    -webkit-animation-name: colorShift;
-    -webkit-animation-duration: 10s;
-    -webkit-animation-iteration-count: infinite;
-    animation-name: colorShift;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-}
-
-// Sticky Footer Experiment
-
-html, body {
-  height: 100%;
-}
-
-.content {
-  min-height: 100%;
-}
-
-.content:after {
-  content: "";
-  display: block;
-}
-
-.footer, .content:after {
-  height: 50px; 
-}
-
-@keyframes borderShift {
-    0% {border-color: #FF00FF;}
-    33% {border-color: #00FFFF;}
-    66% {border-color: #FFFF00;}
-}
-
-@-webkit-keyframes borderShift {
-    0% {border-color: #FF00FF;}
-    33% {border-color: #00FFFF;}
-    66% {border-color: #FFFF00;}
-}
-
-@keyframes backgroundShift {
-    0% {background-color: #FF00FF;}
-    33% {background-color: #00FFFF;}
-    66% {background-color: #FFFF00;}
-}
-
-@-webkit-keyframes backgroundShift {
-    0% {background-color: #FF00FF;}
-    33% {background-color: #00FFFF;}
-    66% {background-color: #FFFF00;}
-}
-
-
-@keyframes colorShift {
-    0% {color: #FF00FF;}
-    33% {color: #00FFFF;}
-    66% {color: #FFFF00;}
-}
-
-@-webkit-keyframes colorShift {
-    0% {color: #FF00FF;}
-    33% {color: #00FFFF;}
-    66% {color: #FFFF00;}
-}
-
-.previous-post {
-    float: left;
-}
-
-.next-post {
-    float: right;
-}
-
-em {
-    font-style: italic;
-}
-
-strong {
-    font-weight: 700;
-}
-
-.other-articles {
-    border-top: 2px solid #cccccc;
-    padding-top: 1.6rem;
+    color: $magenta;
+    @include animate(colorShift, 10s, infinite);
 }
