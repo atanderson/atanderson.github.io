@@ -6,7 +6,7 @@
   border-radius: 5px;
   border: 1px solid #222;
   margin: 20px 0 20px 0;
-  overflow: scroll;
+  overflow: auto;
   font-family: 'Droid Sans Mono', 'Courier', monospace;
   font-size: .8em;
   position: relative;

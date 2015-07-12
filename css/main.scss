@@ -165,20 +165,77 @@ blockquote{
 //------------------------------------------------------------------------------
 //#Header & Footer
 header {
+    background: $spaceGrey;
+    float:left;
+    padding: 1.55em 0;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    width: 76px;
     
+    @media only screen and (max-width: 40em){
+        padding: 0;
+        position: static;
+        height: 40px;
+        width: 100%;
+    }
+
     ul {
-        float: right;
+        clear:left;
+        float: left;
+        width: 100%;
+        list-style: none;
+
+        @media only screen and (max-width: 40em){
+            clear: none;
+            float: right;
+            width: auto;
+        }
+
     }
 
     li {
-        margin-left: 1em;
+        clear: left;
+        float: left;
+        text-align: center;
+        width: 100%;
+
+        @media only screen and (max-width: 40em){
+            clear: none;
+            width: auto;
+            padding-right: 2em;
+        }
+
+        a {
+            display: block;
+            margin-top: 1em;
+            font-family: $codeStack;
+            font-size: .8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            @media only screen and (max-width: 40em){
+                line-height: 35px;
+                margin-top: 0em;
+            }
+
+        }
+
+    }
+
+    nav {
+        margin: auto;
+        max-width: 40em;
     }
 
     .logo {
-        display: block;
-        float: left;
-        max-height: 50px;
+        height: 50px;
         position: relative;
+
+        @media only screen and (max-width: 40em){
+            height: 40px;
+            float: left;
+        }
         
         .svg-screen {
             position: absolute;
@@ -190,48 +247,22 @@ header {
 
         svg {
             @include animate(fillShift, 10s, infinite);
-            float: left;
+            display: block;
+            margin: auto;
             max-height: 50px;
             max-width: 50px;
             fill: $magenta;
-        }
 
-    }
-
-}
-
-header,
-footer {
-    padding: .25em;
-    background: $spaceGrey;
-    height: 50px;
-
-    nav {
-        margin: auto;
-        max-width: 40em;
-
-        ul {
-            list-style: none;
-
-            li {
-                float:left;
+            @media only screen and (max-width: 40em){
+                height: 40px;
+                margin-left: 2em;
+                max-width: 40px;
             }
 
         }
 
-        a {
-            font-family: $codeStack;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 50px;
-        }
-
     }
 
-}
-
-html, body { //Required for sticky footer 
-  height: 100%;
 }
 
 //#Content area
@@ -241,6 +272,24 @@ html, body { //Required for sticky footer
     margin: auto;
     color: $spaceGrey;
     min-height: 100%;
+
+    h1:first-of-type {
+        padding-top: .25em;
+
+        @media only screen and (max-width: 40em) {
+            margin-top: 0;
+            padding-top: 4rem;
+        }
+
+    }
+
+    @media only screen and (max-width: 65em) {
+        margin: auto 76px;
+    }
+
+    @media only screen and (max-width: 40em) {
+        margin: auto;
+    }
 
     &::after {
         content: "";
