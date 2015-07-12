@@ -35,10 +35,10 @@ $copy: #222222;
 //#Mixins
 //------------------------------------------------------------------------------
 @mixin animate($name, $duration, $iteration){
-    -webkit-animation: $name $duration $iteration;
-    -moz-animation:    $name $duration $iteration; 
-    -o-animation:      $name $duration $iteration; 
-    animation:         $name $duration $iteration; 
+    -webkit-animation: $name $duration $iteration linear;
+    -moz-animation:    $name $duration $iteration linear; 
+    -o-animation:      $name $duration $iteration linear; 
+    animation:         $name $duration $iteration linear; 
 }
 
 @mixin primaryShift($name, $prop){
@@ -176,14 +176,24 @@ header {
 
     .logo {
         display: block;
+        float: left;
         max-height: 50px;
+        position: relative;
+        
+        .svg-screen {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
 
         svg {
+            @include animate(fillShift, 10s, infinite);
             float: left;
             max-height: 50px;
             max-width: 50px;
             fill: $magenta;
-            @include animate(fillShift, 10s, infinite);
         }
 
     }
@@ -243,6 +253,7 @@ html, body { //Required for sticky footer
     }
 
     & > p:last-of-type::after { //tombstone
+        @include animate(backgroundShift, 10s, infinite);
         content: '';
         transform: rotate(50deg);
         display: inline-block;
@@ -253,7 +264,6 @@ html, body { //Required for sticky footer
         width: 6px;
         height: 6px;
         background-color: $magenta;
-        @include animate(backgroundShift, 10s, infinite);
     }
 
     p, & > ul, div {
@@ -321,6 +331,11 @@ html, body { //Required for sticky footer
 //#Utility
 //------------------------------------------------------------------------------
 .colorshift {
-    color: $magenta;
     @include animate(colorShift, 10s, infinite);
+    color: $magenta;
+
+    &:visited {
+        @include animate(colorShift, 10s, infinite);
+        color: $magenta;
+    }
 }
