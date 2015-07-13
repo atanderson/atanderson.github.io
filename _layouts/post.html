@@ -3,15 +3,19 @@ layout: default
 ---
 
 <h1>{{ page.title }}</h1>
+
 <div class="date">{{ page.date | date_to_string }}</div>
 
 {{ content }}
 
 <div class="other-articles">
-{% if page.previous %}
-    <a rel="prev" class="previous-post" href="{{ page.previous.url }}">&larr; {{ page.previous.title }}</a>
-{% endif %}
-{% if page.next %}
-    <a rel="next" class="next-post" href="{{ page.next.url }}">{{ page.next.title }} &rarr;</a>
-{% endif %}
+
+    {% if page.previous %}
+        <a rel="prev" class="previous-post" href="{{ page.previous.url }}">&larr; {{ page.previous.title }}</a>
+    {% endif %}
+
+    {% if page.next %}
+        <a rel="next" class="next-post" href="{{ page.next.url }}">{{ page.next.title }} &rarr;</a>
+    {% endif %}
+    
 </div>

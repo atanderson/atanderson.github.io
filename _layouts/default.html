@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <script type="text/javascript">
-      WebFontConfig = {
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{{ page.title }}</title>
+
+        <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+        <script type="text/javascript">
+        WebFontConfig = {
         google: { families: [ 'Gentium+Book+Basic:400,400italic,700,700italic:latin', 'Droid+Sans+Mono' ] }
-      };
-      (function() {
+        };
+        (function() {
         var wf = document.createElement('script');
         wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
         wf.type = 'text/javascript';
         wf.async = 'true';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wf, s);
-      })(); </script>
+        })();
+        </script>
 
-    <noscript>
-      <link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-      <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
-    </noscript>
+        <noscript>
+        <link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+        </noscript>
 
-</head>
-<body>
+    </head>
 
-<header>
-    <nav>
-        <div class="logo">{% include logo.html %}</div>
-        <ul>
-            <li><a href="/" class="colorshift" >posts</a></li>
-            <li><a href="/about.html" class="colorshift" >about</a></li>
-        </ul>
-    </nav>
-</header>
+    <body>
 
-<section class="content">
+        <header>
+            <nav>
+                <div class="logo">{% include logo.html %}</div>
+                <ul>
+                    <li><a href="/" class="colorshift" >posts</a></li>
+                    <li><a href="/about.html" class="colorshift" >about</a></li>
+                </ul>
+            </nav>
+        </header>
 
-{{ content }}
+        <section class="content">
+            {{ content }}
+        </section>
 
-</section>
+        <script type="text/javascript" src="/js/dropcap.js"></script>
 
-<script type="text/javascript" src="/js/dropcap.js"></script>
-<script>
-    var dropcaps = document.querySelectorAll(".dropcap");
-    window.Dropcap.layout(dropcaps, 2.3, 2);
-  </script>
-</body>
+        <script>
+            var dropcaps = document.querySelectorAll(".dropcap");
+            window.Dropcap.layout(dropcaps, 2.3, 2);
+        </script>
+
+    </body>
+
 </html>

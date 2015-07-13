@@ -31,6 +31,8 @@ $magenta: #FF00FF;
 $codeStack: 'Droid Sans Mono', 'Helvetica', 'Arial', sans-serif;
 $copyStack: 'Gentium Book Basic', Georgia , Cambria, 'Times New Roman', times, serif;
 $copy: #222222;
+$break-small: 40em;
+$break-medium: 65em;
 
 //#Mixins
 //------------------------------------------------------------------------------
@@ -80,7 +82,7 @@ body {
     word-break: break-word;
     font-weight: 400;
 
-    @media only screen and (min-width: 40em){
+    @media only screen and (min-width: $break-small){
         font-size: 125%;
     }
 
@@ -173,7 +175,7 @@ header {
     top: 0;
     width: 76px;
     
-    @media only screen and (max-width: 40em){
+    @media only screen and (max-width: $break-small){
         padding: 0;
         position: static;
         height: 40px;
@@ -186,7 +188,7 @@ header {
         width: 100%;
         list-style: none;
 
-        @media only screen and (max-width: 40em){
+        @media only screen and (max-width: $break-small){
             clear: none;
             float: right;
             width: auto;
@@ -200,7 +202,7 @@ header {
         text-align: center;
         width: 100%;
 
-        @media only screen and (max-width: 40em){
+        @media only screen and (max-width: $break-small){
             clear: none;
             width: auto;
             padding-right: 2em;
@@ -214,7 +216,7 @@ header {
             text-transform: uppercase;
             letter-spacing: 1px;
 
-            @media only screen and (max-width: 40em){
+            @media only screen and (max-width: $break-small){
                 line-height: 35px;
                 margin-top: 0em;
             }
@@ -232,7 +234,7 @@ header {
         height: 50px;
         position: relative;
 
-        @media only screen and (max-width: 40em){
+        @media only screen and (max-width: $break-small){
             height: 40px;
             float: left;
         }
@@ -253,7 +255,7 @@ header {
             max-width: 50px;
             fill: $magenta;
 
-            @media only screen and (max-width: 40em){
+            @media only screen and (max-width: $break-small){
                 height: 40px;
                 margin-left: 2em;
                 max-width: 40px;
@@ -276,18 +278,18 @@ header {
     h1:first-of-type {
         padding-top: .25em;
 
-        @media only screen and (max-width: 40em) {
+        @media only screen and (max-width: $break-small) {
             margin-top: 0;
             padding-top: 4rem;
         }
 
     }
 
-    @media only screen and (max-width: 65em) {
+    @media only screen and (max-width: $break-medium) {
         margin: auto 76px;
     }
 
-    @media only screen and (max-width: 40em) {
+    @media only screen and (max-width: $break-small) {
         margin: auto;
     }
 
@@ -303,6 +305,7 @@ header {
 
     & > p:last-of-type::after { //tombstone
         @include animate(backgroundShift, 10s, infinite);
+        background-color: $magenta;
         content: '';
         transform: rotate(50deg);
         display: inline-block;
@@ -312,7 +315,6 @@ header {
         left: 5px;
         width: 6px;
         height: 6px;
-        background-color: $magenta;
     }
 
     p, & > ul, div {

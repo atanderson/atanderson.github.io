@@ -4,15 +4,15 @@ layout: default
 ---
 
 <section class="intro">
-<h2>andrew anderson</h2>
+    <h2>andrew anderson</h2>
 </section>
 
 <section>
     <ul class="posts">
         {% for post in site.posts %}
-        <li>
-            <a href="{{ post.url }}">{{ post.title }}</a>  {{ post.date | date_to_string }}
-        </li>
+            <li>
+                <a href="{{ post.url }}">{{ post.title }}</a>  {{ post.date | date_to_string }}
+            </li>
         {% endfor %}
     </ul>
 </section>
